@@ -39,6 +39,7 @@ public class PilotoControlador implements ActionListener{
     boolean modificar=false;
     boolean eliminar=false;
     boolean pkRepetida = false;
+    boolean noEliminar = false;
     
     public PilotoControlador(Vista v){
         this.vistaPrincipal=v;
@@ -155,6 +156,8 @@ public class PilotoControlador implements ActionListener{
         insertar=false;
         modificar=false;
         eliminar=false;
+        pkRepetida=false;
+        noEliminar=false;
         this.resetTextField();
         this.setEnable();
         //actualizo comboBox de Aerolineas
@@ -221,7 +224,8 @@ public class PilotoControlador implements ActionListener{
 
             modeloPiloto.addRow(vectorObjetos);
         }
-        JOptionPane.showMessageDialog(null, "Nueva Fila Insertada");
+        if(pkRepetida==false)
+            JOptionPane.showMessageDialog(null, "Nueva Fila Insertada");
     }
     public void modificar() {
         
@@ -236,7 +240,7 @@ public class PilotoControlador implements ActionListener{
          
             //creo una Aerolinea
             Piloto myPiloto = new Piloto(
-                this.vistaPrincipal.txtDNI.getText(),
+                PilotoControlador.listaPilotos.get(this.vistaPrincipal.getFila()).getDNI(),
                 this.vistaPrincipal.txtNombrePiloto.getText(),
                 this.vistaPrincipal.txtApellido.getText(),
                 this.vistaPrincipal.txtEdad.getText(),
@@ -246,7 +250,6 @@ public class PilotoControlador implements ActionListener{
             this.listaPilotos.set(this.vistaPrincipal.getFila(), myPiloto);
 
             //incorporo a model
-            this.modeloPiloto.setValueAt(this.vistaPrincipal.txtDNI.getText(), this.vistaPrincipal.getFila(), 0);
             this.modeloPiloto.setValueAt(this.vistaPrincipal.txtNombrePiloto.getText(), this.vistaPrincipal.getFila(), 1);
             this.modeloPiloto.setValueAt(this.vistaPrincipal.txtApellido.getText(), this.vistaPrincipal.getFila(), 2);
 //            this.modeloPiloto.setValueAt(this.vistaPrincipal.txtApellido.getText(), this.vistaPrincipal.getFila(), 3);
@@ -258,28 +261,39 @@ public class PilotoControlador implements ActionListener{
     
     public void eliminar() throws IOException{
         this.vistaPrincipal.setFila(this.vistaPrincipal.jTablePiloto.getSelectedRow());
-        AvionControlador myAvion = new AvionControlador(this.vistaPrincipal);
+        AerolineasControlador myAerolinea = new AerolineasControlador(this.vistaPrincipal);
         
         if(this.vistaPrincipal.getFila()<0){
             JOptionPane.showMessageDialog(null, "No has seleccionado ninguna Fila");
         }
         else{
+            //si hay tuplas puedo eliminar
             if(this.listaPilotos.size()>0){
                 int i = this.vistaPrincipal.getFila();
-                //elimino los Aviones asociados a ese Piloto
+                //compruebo que no está asociado a ningun avion
                 for(int j=0; j<AvionControlador.listaAviones.size();j++){
                     if(AvionControlador.listaAviones.get(j).getId_avion().equals(PilotoControlador.listaPilotos.get(i).getDNI_avion())){
-                        AvionControlador.listaAviones.remove(j);
-                        AvionControlador.modeloAvion.removeRow(j);
-                        //sobreescribo el archivo modificado
-                        myAvion.escribirEnArchivo();
+                        JOptionPane.showMessageDialog(null, "Éste Piloto está asociado a uno o varios Aviones");
+                        noEliminar = true;
                     }
                 }
-                //elimino el Piloto del array
-                this.listaPilotos.remove(this.vistaPrincipal.getFila());
+                if(noEliminar==false){
+                    //elimino el campo DNI_Piloto de la Aerolinea que lo contiene
+                    for(int j=0; j<AerolineasControlador.listaAerolineas.size();j++){
+                        if(PilotoControlador.listaPilotos.get(i).getDNI().equals(AerolineasControlador.listaAerolineas.get(j).getDNI_piloto())){
+                            AerolineasControlador.listaAerolineas.get(j).setDNI_piloto(" ");
+                            //sobreescribo el archivo modificado
+                            myAerolinea.escribirEnArchivo();
+                        }
+                    }
+                    //elimino el Piloto del array
+                    this.listaPilotos.remove(this.vistaPrincipal.getFila());
 
-                this.modeloPiloto.removeRow(this.vistaPrincipal.getFila());
-                JOptionPane.showMessageDialog(null, "Fila Eliminada");
+                    this.modeloPiloto.removeRow(this.vistaPrincipal.getFila());
+                    JOptionPane.showMessageDialog(null, "Fila Eliminada");
+                    
+                    
+                }
             }
             else{
                 JOptionPane.showMessageDialog(null, "No hay Filas a Eliminar");
@@ -292,6 +306,8 @@ public class PilotoControlador implements ActionListener{
         insertar=false;
         modificar=false;
         eliminar=false;
+        pkRepetida=false;
+        noEliminar=false;
         this.setEnable();
         this.vistaPrincipal.cambiarVisibilidadtxfPiloto(false);
         this.vistaPrincipal.cambiarVisibilidadPilotoAC(false);

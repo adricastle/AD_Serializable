@@ -89,9 +89,9 @@ public class Piloto implements Serializable{
     public ArrayList obtenerTuplasEjemplo(){
         ArrayList<Piloto> myPiloto = new ArrayList<>();
         
-        Piloto pedro = new Piloto("74663392K","2344","Pedro","Aguado","7466OK");
-        Piloto pedro2 = new Piloto("74663392K","2344","Pedro","Aguado","43758U");
-        Piloto adri = new Piloto("48556698H","3466","Adrian","Castillo","58634L");
+        Piloto pedro = new Piloto("74663392K","Pedro","Aguado","32","7466OK");
+        Piloto pedro2 = new Piloto("74663392K","Pedro","Aguado","32","43758U");
+        Piloto adri = new Piloto("48556698H","Adrian","Castillo","31","58634L");
         
         myPiloto.add(pedro);
         myPiloto.add(pedro2);

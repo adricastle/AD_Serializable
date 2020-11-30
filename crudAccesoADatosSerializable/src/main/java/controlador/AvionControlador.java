@@ -99,7 +99,11 @@ public class AvionControlador implements ActionListener {
         }
         else if(e.getSource() == this.vistaPrincipal.jButtonAceptarAvion){
             
-            this.aceptar();
+            try {
+                this.aceptar();
+            } catch (IOException ex) {
+                Logger.getLogger(AvionControlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             try {
                 this.escribirEnArchivo();
@@ -128,10 +132,11 @@ public class AvionControlador implements ActionListener {
         
     }
     
-    public void aceptar(){
+    public void aceptar() throws IOException{
+        
         if(insertar==true){
             this.insertar();
-            
+
         }
         else if(modificar==true){
             this.modificar();
@@ -139,6 +144,7 @@ public class AvionControlador implements ActionListener {
         else if(eliminar==true){
             this.eliminar();
         }
+        
             
         this.vistaPrincipal.cambiarVisibilidadAvionAC(false);
         this.vistaPrincipal.cambiarVisibilidadtxfAvion(false);
@@ -146,12 +152,23 @@ public class AvionControlador implements ActionListener {
         insertar=false;
         modificar=false;
         eliminar=false;
+        pkRepetida=false;
         this.resetTextField();
         this.setEnable();
         //actualizo comboBox de Pilotos
         pilotoController.actualizarComboBox();
         pilotoController.resetTextField();
         
+    }
+    
+    public void noPkRepetida(){
+        for(int i=0; i<AvionControlador.listaAviones.size();i++){
+                if(this.vistaPrincipal.txtID_avion.getText().equals(AvionControlador.listaAviones.get(i).getId_avion())){
+                    JOptionPane.showMessageDialog(null, "No puede haber PKs repetidas");
+                    pkRepetida=true;
+                }
+               
+        }
     }
     
     public void rellenarEInsertarTextField() {
@@ -162,6 +179,7 @@ public class AvionControlador implements ActionListener {
                 }
                
         }
+        
         
         if(pkRepetida==false){
             Avion myAvion = new Avion(
@@ -205,7 +223,8 @@ public class AvionControlador implements ActionListener {
 
             modeloAvion.addRow(vectorObjetos);
         }
-        JOptionPane.showMessageDialog(null, "Nueva Fila Insertada");
+        if(pkRepetida==false)
+            JOptionPane.showMessageDialog(null, "Nueva Fila Insertada");
     }
     public void modificar() {
         
@@ -218,7 +237,7 @@ public class AvionControlador implements ActionListener {
          
             //creo una Aerolinea
             Avion myAvion = new Avion(
-                this.vistaPrincipal.txtID_avion.getText(),
+                AvionControlador.listaAviones.get(this.vistaPrincipal.getFila()).getId_avion(),
                 this.vistaPrincipal.txtModelo.getText(),
                 this.vistaPrincipal.txtN_asientos.getText(),
                 this.vistaPrincipal.txtFecha_fab.getText(),
@@ -228,7 +247,6 @@ public class AvionControlador implements ActionListener {
             this.listaAviones.set(this.vistaPrincipal.getFila(), myAvion);
 
             //incorporo a model
-            this.modeloAvion.setValueAt(this.vistaPrincipal.txtID_avion.getText(), this.vistaPrincipal.getFila(), 0);
             this.modeloAvion.setValueAt(this.vistaPrincipal.txtModelo.getText(), this.vistaPrincipal.getFila(), 1);
             this.modeloAvion.setValueAt(this.vistaPrincipal.txtN_asientos.getText(), this.vistaPrincipal.getFila(), 2);
 //            this.modeloAvion.setValueAt(this.vistaPrincipal.txtFecha_fab.getText(), this.vistaPrincipal.getFila(), 3);
@@ -238,19 +256,32 @@ public class AvionControlador implements ActionListener {
     
     }
     
-    public void eliminar(){
+    public void eliminar() throws IOException{
         this.vistaPrincipal.setFila(this.vistaPrincipal.jTableAvion.getSelectedRow());
+        PilotoControlador myPiloto = new PilotoControlador(this.vistaPrincipal);
         //filtro si no ha seleccionado ninguna fila
         if(this.vistaPrincipal.getFila()<0){
             JOptionPane.showMessageDialog(null, "No has seleccionado ninguna Fila");
         }
         else{
             if(this.listaAviones.size()>0){
-                //elimino la Aerolinea del array
+                int i = this.vistaPrincipal.getFila();
+                //elimino el campo DNI_avion que tiene el Piloto asociado
+                for(int j=0; j<PilotoControlador.listaPilotos.size();j++){
+                    if(AvionControlador.listaAviones.get(i).getId_avion().equals(PilotoControlador.listaPilotos.get(j).getDNI_avion())){
+                        PilotoControlador.listaPilotos.get(j).setDNI_avion(" ");
+                        //sobreescribo el archivo modificado
+                        myPiloto.escribirEnArchivo();
+                    }
+                }
+                //elimino el avion del array
                 this.listaAviones.remove(this.vistaPrincipal.getFila());
 
                 this.modeloAvion.removeRow(this.vistaPrincipal.getFila());
                 JOptionPane.showMessageDialog(null, "Fila Eliminada");
+                
+                
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "No hay Filas a Eliminar");
@@ -262,6 +293,7 @@ public class AvionControlador implements ActionListener {
         insertar=false;
         modificar=false;
         eliminar=false;
+        pkRepetida=false;
         this.setEnable();
         this.vistaPrincipal.cambiarVisibilidadtxfAvion(false);
         this.vistaPrincipal.cambiarVisibilidadAvionAC(false);
