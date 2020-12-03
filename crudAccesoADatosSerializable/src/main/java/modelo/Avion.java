@@ -18,14 +18,14 @@ public class Avion implements Serializable{
     private String modelo;
     private String n_asientos;
     private String fecha_fab;
-    private String categoria;
+    private String DNI_piloto;
 
-    public Avion(String id_avion, String modelo, String n_asientos, String fecha_fab, String categoria) {
+    public Avion(String id_avion, String modelo, String n_asientos, String fecha_fab, String DNI_piloto) {
         this.id_avion = id_avion;
         this.modelo = modelo;
         this.n_asientos = n_asientos;
         this.fecha_fab = fecha_fab;
-        this.categoria = categoria;
+        this.DNI_piloto = DNI_piloto;
     }
 
     public Avion() {
@@ -64,12 +64,12 @@ public class Avion implements Serializable{
         this.fecha_fab = fecha_fab;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getDNI_piloto() {
+        return DNI_piloto;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setDNI_piloto(String DNI_piloto) {
+        this.DNI_piloto = DNI_piloto;
     }
     
      public ArrayList obtenerCampos(){
@@ -87,11 +87,11 @@ public class Avion implements Serializable{
     public ArrayList obtenerTuplasEjemplo(){
         ArrayList<Avion> myAvion = new ArrayList<>();
         
-        Avion boing = new Avion("7466OK","Boing747","100","22/06/1989","Militar");
-        Avion boing2 = new Avion("58634L","Boing357","140","54/07/1966","Militar");
-        Avion boing3 = new Avion("43758U","Boing747","140","86/05/1976","Comercial");
-        Avion boing4 = new Avion("78430I","Boing357","100","86/03/1989","Comercial");
-        Avion boing5 = new Avion("52789F","Boing747","140","86/01/1998","Comercial");
+        Avion boing = new Avion("7466OK","Boing747","100","22/06/1989","74663392K");
+        Avion boing2 = new Avion("58634L","Boing357","140","54/07/1966","74663392K");
+        Avion boing3 = new Avion("43758U","Boing747","140","86/05/1976","74663392K");
+        Avion boing4 = new Avion("78430I","Boing357","100","86/03/1989","74663392K");
+        Avion boing5 = new Avion("52789F","Boing747","140","86/01/1998","74663392K");
         
         myAvion.add(boing);
         myAvion.add(boing2);

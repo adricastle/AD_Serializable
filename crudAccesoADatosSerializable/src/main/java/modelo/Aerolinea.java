@@ -18,14 +18,14 @@ public class Aerolinea implements Serializable {
     private String nombre;
     private String n_empleados;
     private String sede;
-    private String DNI_piloto;
+    private String N_departamentos;
 
-    public Aerolinea(String CIF, String nombre, String n_empleados, String sede, String DNI_piloto) {
+    public Aerolinea(String CIF, String nombre, String n_empleados, String sede, String N_departamentos) {
         this.CIF = CIF;
         this.nombre = nombre;
         this.n_empleados = n_empleados;
         this.sede = sede;
-        this.DNI_piloto = DNI_piloto;
+        this.N_departamentos = N_departamentos;
     }
 
     public Aerolinea() {
@@ -65,12 +65,12 @@ public class Aerolinea implements Serializable {
         this.sede = sede;
     }
 
-    public String getDNI_piloto() {
-        return DNI_piloto;
+    public String getN_departamentos() {
+        return N_departamentos;
     }
 
-    public void setDNI_piloto(String DNI_piloto) {
-        this.DNI_piloto = DNI_piloto;
+    public void setN_departamentos(String N_departamentos) {
+        this.N_departamentos = N_departamentos;
     }
     
     public ArrayList obtenerCampos(){
@@ -80,7 +80,7 @@ public class Aerolinea implements Serializable {
         myCampos.add("Nombre");
         myCampos.add("Nº_empleados");
 //        myCampos.add("Sede");
-//        myCampos.add("DNI_piloto");
+//        myCampos.add("N_departamentos");
         
         return myCampos;
     }
@@ -88,9 +88,9 @@ public class Aerolinea implements Serializable {
     public ArrayList obtenerTuplasEjemplo(){
         ArrayList<Aerolinea> myAerolinea = new ArrayList<>();
         
-        Aerolinea ryanair = new Aerolinea("45GG","Ryanair","45","MAdrid","7466OK");
-        Aerolinea vueling = new Aerolinea("65FT","Vueling","653","Barcelona","7466OK");
-        Aerolinea pegasus = new Aerolinea("12HY","Pegasus","539","Ancara","43758U");
+        Aerolinea ryanair = new Aerolinea("45GG","Ryanair","45","MAdrid","4");
+        Aerolinea vueling = new Aerolinea("65FT","Vueling","653","Barcelona","6");
+        Aerolinea pegasus = new Aerolinea("12HY","Pegasus","539","Ancara","7");
         
         myAerolinea.add(ryanair);
         myAerolinea.add(vueling);

@@ -18,19 +18,19 @@ public class Piloto implements Serializable{
     private String nombre;
     private String apellido;
     private String edad;
-    private String DNI_avion;
+    private String CIF_Aerolineas;
     
 
     public Piloto() {
     }
 
     
-    public Piloto(String DNI,String nombre, String apellido, String edad, String DNI_avion) {
+    public Piloto(String DNI,String nombre, String apellido, String edad, String CIF_Aerolineas) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-        this.DNI_avion = DNI_avion;
+        this.CIF_Aerolineas = CIF_Aerolineas;
     }
     
     
@@ -42,12 +42,12 @@ public class Piloto implements Serializable{
         this.DNI = DNI;
     }
 
-    public String getDNI_avion() {
-        return DNI_avion;
+    public String getCIF_Aerolineas() {
+        return CIF_Aerolineas;
     }
 
-    public void setDNI_avion(String DNI_avion) {
-        this.DNI_avion = DNI_avion;
+    public void setCIF_Aerolineas(String CIF_Aerolineas) {
+        this.CIF_Aerolineas = CIF_Aerolineas;
     }
 
     public String getNombre() {

@@ -44,25 +44,24 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jButtonCancelarAerolineas = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonCancelarAvion = new javax.swing.JButton();
         txtDNI_piloto = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTableAerolineas = new javax.swing.JTable();
-        jButtonAceptarAerolineas = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
-        txtCIF = new javax.swing.JTextField();
-        jButtonEliminarAerolineas = new javax.swing.JButton();
-        jButtonInsertarAerolineas = new javax.swing.JButton();
-        jButtonModificarAerolineas = new javax.swing.JButton();
-        txtNEmpleados = new javax.swing.JTextField();
-        txtSede = new javax.swing.JTextField();
-        jCombAerolineas = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAvion = new javax.swing.JTable();
+        jButtonAceptarAvion = new javax.swing.JButton();
+        txtModelo = new javax.swing.JTextField();
+        txtID_avion = new javax.swing.JTextField();
+        jButtonEliminarAvion = new javax.swing.JButton();
+        jButtonInsertarAvion = new javax.swing.JButton();
+        jButtonModificarAvion = new javax.swing.JButton();
+        txtN_asientos = new javax.swing.JTextField();
+        txtFecha_fab = new javax.swing.JTextField();
+        jCombAviones = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jButtonCancelarPiloto = new javax.swing.JButton();
-        txtDNI_avion = new javax.swing.JTextField();
+        txtCIF_aerolinea = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePiloto = new javax.swing.JTable();
         jButtonAceptarPiloto = new javax.swing.JButton();
@@ -74,156 +73,149 @@ public class Vista extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
         jCombPiloto = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
-        jButtonCancelarAvion = new javax.swing.JButton();
-        txtCategoria = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableAvion = new javax.swing.JTable();
-        jButtonAceptarAvion = new javax.swing.JButton();
-        txtModelo = new javax.swing.JTextField();
-        txtID_avion = new javax.swing.JTextField();
-        jButtonEliminarAvion = new javax.swing.JButton();
-        jButtonInsertarAvion = new javax.swing.JButton();
-        jButtonModificarAvion = new javax.swing.JButton();
-        txtN_asientos = new javax.swing.JTextField();
-        txtFecha_fab = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jButtonCancelarAerolineas = new javax.swing.JButton();
+        txtN_departamentos = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableAerolineas = new javax.swing.JTable();
+        jButtonAceptarAerolineas = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtCIF = new javax.swing.JTextField();
+        jButtonEliminarAerolineas = new javax.swing.JButton();
+        jButtonInsertarAerolineas = new javax.swing.JButton();
+        jButtonModificarAerolineas = new javax.swing.JButton();
+        txtNEmpleados = new javax.swing.JTextField();
+        txtSede = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonCancelarAerolineas.setText("Cancelar");
+        jButtonCancelarAvion.setText("Cancelar");
 
-        txtDNI_piloto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDNI_pilotoActionPerformed(evt);
-            }
-        });
-
-        jTableAerolineas.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAvion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "null", "null", "null"
             }
-        ));
-        jTableAerolineas.addMouseListener(new java.awt.event.MouseAdapter() {
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTableAvion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableAerolineasMouseClicked(evt);
+                jTableAvionMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTableAerolineas);
+        jScrollPane1.setViewportView(jTableAvion);
 
-        jButtonAceptarAerolineas.setText("Aceptar");
-        jButtonAceptarAerolineas.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAceptarAvion.setText("Aceptar");
+
+        txtModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarAerolineasActionPerformed(evt);
+                txtModeloActionPerformed(evt);
             }
         });
 
-        jButtonEliminarAerolineas.setText("Eliminar");
-
-        jButtonInsertarAerolineas.setText("Insertar");
-        jButtonInsertarAerolineas.addActionListener(new java.awt.event.ActionListener() {
+        txtID_avion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInsertarAerolineasActionPerformed(evt);
+                txtID_avionActionPerformed(evt);
             }
         });
 
-        jButtonModificarAerolineas.setText("Modificar");
-        jButtonModificarAerolineas.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminarAvion.setText("Eliminar");
+
+        jButtonInsertarAvion.setText("Insertar");
+
+        jButtonModificarAvion.setText("Modificar");
+
+        jCombAviones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarAerolineasActionPerformed(evt);
+                jCombAvionesActionPerformed(evt);
             }
         });
 
-        jCombAerolineas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCombAerolineasActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButtonInsertarAerolineas)
+                .addComponent(jButtonInsertarAvion)
+                .addGap(29, 29, 29)
+                .addComponent(jButtonModificarAvion)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonModificarAerolineas)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEliminarAerolineas)
+                .addComponent(jButtonEliminarAvion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAceptarAerolineas)
-                .addGap(28, 28, 28)
-                .addComponent(jButtonCancelarAerolineas))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCIF, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSede, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(jCombAerolineas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtDNI_piloto, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jButtonAceptarAvion)
+                .addGap(8, 8, 8)
+                .addComponent(jButtonCancelarAvion)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCombAviones, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtID_avion)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtN_asientos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFecha_fab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDNI_piloto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(38, 38, 38))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtCIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtID_avion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDNI_piloto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jCombAerolineas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonCancelarAerolineas)
-                            .addComponent(jButtonAceptarAerolineas)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtN_asientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtFecha_fab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDNI_piloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jCombAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCancelarAvion)
+                            .addComponent(jButtonAceptarAvion)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonModificarAerolineas)
-                            .addComponent(jButtonInsertarAerolineas)
-                            .addComponent(jButtonEliminarAerolineas))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonModificarAvion)
+                            .addComponent(jButtonInsertarAvion)
+                            .addComponent(jButtonEliminarAvion))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Aerolineas", jPanel2);
+        jTabbedPane1.addTab("Avion", jPanel1);
 
         jButtonCancelarPiloto.setText("Cancelar");
 
@@ -298,7 +290,7 @@ public class Vista extends javax.swing.JFrame {
                                     .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                     .addComponent(txtDNI)
                                     .addComponent(txtNombrePiloto))
-                                .addComponent(txtDNI_avion, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCIF_aerolinea, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -317,7 +309,7 @@ public class Vista extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtDNI_avion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCIF_aerolinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,125 +352,135 @@ public class Vista extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Piloto", jPanel3);
 
-        jButtonCancelarAvion.setText("Cancelar");
+        jButtonCancelarAerolineas.setText("Cancelar");
 
-        jTableAvion.setModel(new javax.swing.table.DefaultTableModel(
+        txtN_departamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtN_departamentosActionPerformed(evt);
+            }
+        });
+
+        jTableAerolineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "null", "null", "null"
+                "Title 1", "Title 2", "Title 3"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTableAvion.addMouseListener(new java.awt.event.MouseAdapter() {
+        ));
+        jTableAerolineas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableAvionMouseClicked(evt);
+                jTableAerolineasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTableAvion);
+        jScrollPane3.setViewportView(jTableAerolineas);
 
-        jButtonAceptarAvion.setText("Aceptar");
-
-        txtModelo.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAceptarAerolineas.setText("Aceptar");
+        jButtonAceptarAerolineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtModeloActionPerformed(evt);
+                jButtonAceptarAerolineasActionPerformed(evt);
             }
         });
 
-        txtID_avion.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminarAerolineas.setText("Eliminar");
+
+        jButtonInsertarAerolineas.setText("Insertar");
+        jButtonInsertarAerolineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID_avionActionPerformed(evt);
+                jButtonInsertarAerolineasActionPerformed(evt);
             }
         });
 
-        jButtonEliminarAvion.setText("Eliminar");
+        jButtonModificarAerolineas.setText("Modificar");
+        jButtonModificarAerolineas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarAerolineasActionPerformed(evt);
+            }
+        });
 
-        jButtonInsertarAvion.setText("Insertar");
-
-        jButtonModificarAvion.setText("Modificar");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtID_avion)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtN_asientos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFecha_fab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(38, 38, 38))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButtonInsertarAvion)
-                .addGap(29, 29, 29)
-                .addComponent(jButtonModificarAvion)
+                .addComponent(jButtonInsertarAerolineas)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonEliminarAvion)
+                .addComponent(jButtonModificarAerolineas)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEliminarAerolineas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAceptarAvion)
+                .addComponent(jButtonAceptarAerolineas)
+                .addGap(28, 28, 28)
+                .addComponent(jButtonCancelarAerolineas))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCancelarAvion))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCIF, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSede, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtN_departamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtID_avion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtCIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtN_asientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFecha_fab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonCancelarAvion)
-                            .addComponent(jButtonAceptarAvion)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtNEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtN_departamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCancelarAerolineas)
+                            .addComponent(jButtonAceptarAerolineas)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonModificarAvion)
-                            .addComponent(jButtonInsertarAvion)
-                            .addComponent(jButtonEliminarAvion))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonModificarAerolineas)
+                            .addComponent(jButtonInsertarAerolineas)
+                            .addComponent(jButtonEliminarAerolineas))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Avion", jPanel1);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Aerolineas", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -500,9 +502,9 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtModeloActionPerformed
 
-    private void txtDNI_pilotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNI_pilotoActionPerformed
+    private void txtN_departamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtN_departamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDNI_pilotoActionPerformed
+    }//GEN-LAST:event_txtN_departamentosActionPerformed
 
     private void jTableAerolineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAerolineasMouseClicked
         
@@ -512,7 +514,7 @@ public class Vista extends javax.swing.JFrame {
         this.txtNombre.setText((AerolineasControlador.listaAerolineas.get(fila).getNombre()));
         this.txtNEmpleados.setText((AerolineasControlador.listaAerolineas.get(fila).getN_empleados()));
         this.txtSede.setText((AerolineasControlador.listaAerolineas.get(fila).getSede()));
-        this.txtDNI_piloto.setText((AerolineasControlador.listaAerolineas.get(fila).getDNI_piloto()));
+        this.txtN_departamentos.setText((AerolineasControlador.listaAerolineas.get(fila).getN_departamentos()));
     }//GEN-LAST:event_jTableAerolineasMouseClicked
 
     private void jButtonInsertarAerolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarAerolineasActionPerformed
@@ -534,7 +536,7 @@ public class Vista extends javax.swing.JFrame {
         this.txtModelo.setText(AvionControlador.listaAviones.get(fila).getModelo());
         this.txtN_asientos.setText(AvionControlador.listaAviones.get(fila).getN_asientos());
         this.txtFecha_fab.setText(AvionControlador.listaAviones.get(fila).getFecha_fab());
-        this.txtCategoria.setText(AvionControlador.listaAviones.get(fila).getCategoria());
+        this.txtDNI_piloto.setText(AvionControlador.listaAviones.get(fila).getDNI_piloto());
     }//GEN-LAST:event_jTableAvionMouseClicked
 
     private void jTablePilotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePilotoMouseClicked
@@ -544,37 +546,37 @@ public class Vista extends javax.swing.JFrame {
         this.txtNombrePiloto.setText(PilotoControlador.listaPilotos.get(fila).getNombre());
         this.txtApellido.setText(PilotoControlador.listaPilotos.get(fila).getApellido());
         this.txtEdad.setText(PilotoControlador.listaPilotos.get(fila).getEdad());
-        this.txtDNI_avion.setText(PilotoControlador.listaPilotos.get(fila).getDNI_avion());
+        this.txtCIF_aerolinea.setText(PilotoControlador.listaPilotos.get(fila).getCIF_Aerolineas());
         
     }//GEN-LAST:event_jTablePilotoMouseClicked
 
-    private void jCombAerolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombAerolineasActionPerformed
-        if(this.jCombAerolineas.getItemCount()==0){
-             this.txtDNI_piloto.setText("");
-        }
-        else
-            this.txtDNI_piloto.setText(this.jCombAerolineas.getSelectedItem().toString());
-    }//GEN-LAST:event_jCombAerolineasActionPerformed
-
     private void jCombPilotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombPilotoActionPerformed
         if(this.jCombPiloto.getItemCount()==0){
-            this.txtDNI_avion.setText("");
+            this.txtCIF_aerolinea.setText("");
         }
         else
-            this.txtDNI_avion.setText(this.jCombPiloto.getSelectedItem().toString());
+            this.txtCIF_aerolinea.setText(this.jCombPiloto.getSelectedItem().toString());
     }//GEN-LAST:event_jCombPilotoActionPerformed
+
+    private void jCombAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombAvionesActionPerformed
+        if(this.jCombAviones.getItemCount()==0){
+            this.txtDNI_piloto.setText("");
+        }
+        else
+            this.txtDNI_piloto.setText(this.jCombAviones.getSelectedItem().toString());
+    }//GEN-LAST:event_jCombAvionesActionPerformed
 
     public void cambiarVisibilidadtxfAerolineas(Boolean visible){
         this.txtCIF.setEnabled(visible);
         this.txtNombre.setEnabled(visible);
         this.txtNEmpleados.setEnabled(visible);
         this.txtSede.setEnabled(visible);
-        this.txtDNI_piloto.setEnabled(visible);
-        this.jCombAerolineas.setVisible(visible);
+        this.txtN_departamentos.setEnabled(visible);
+        
     }
     public void cambiarVisibilidadtxfPiloto(Boolean visible){
         this.txtDNI.setEnabled(visible);
-        this.txtDNI_avion.setEnabled(visible);
+        this.txtCIF_aerolinea.setEnabled(visible);
         this.txtNombrePiloto.setEnabled(visible);
         this.txtApellido.setEnabled(visible);
         this.txtEdad.setEnabled(visible);
@@ -585,7 +587,8 @@ public class Vista extends javax.swing.JFrame {
         this.txtModelo.setEnabled(visible);
         this.txtN_asientos.setEnabled(visible);
         this.txtFecha_fab.setEnabled(visible);
-        this.txtCategoria.setEnabled(visible);
+        this.txtDNI_piloto.setEnabled(visible);
+        this.jCombAviones.setVisible(visible);
     }
     
     
@@ -612,22 +615,22 @@ public class Vista extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws IOException, FileNotFoundException, ClassNotFoundException {
        Vista myVista = new Vista();
-       
-       AvionControlador myAvionController = new AvionControlador(myVista);
-       myAvionController.insertarAvionesEnTabla();
       
-       PilotoControlador myPilotoController = new PilotoControlador(myVista);
-       myPilotoController.insertarPilotosEnTabla();
-       
        AerolineasControlador myAerolineasController = new AerolineasControlador(myVista);
        myAerolineasController.insertarAerolineasEnTabla();
+       
+       PilotoControlador myPilotoController = new PilotoControlador(myVista);
+       myPilotoController.insertarPilotosEnTabla();
       
+       AvionControlador myAvionController = new AvionControlador(myVista);
+       myAvionController.insertarAvionesEnTabla();
+       
        myVista.setVisible(true);
        
+       myAerolineasController.obtenerPilotoControlador(myPilotoController);
+       myPilotoController.obtenerAvionControlador(myAvionController);
        myAvionController.obtenerPilotoControlador(myPilotoController);
-       myPilotoController.obtenerAerolineaControlador(myAerolineasController);
-       
-       
+    
     
     }
 
@@ -647,7 +650,7 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JButton jButtonModificarAerolineas;
     public javax.swing.JButton jButtonModificarAvion;
     public javax.swing.JButton jButtonModificarPiloto;
-    public javax.swing.JComboBox<String> jCombAerolineas;
+    public javax.swing.JComboBox<String> jCombAviones;
     public javax.swing.JComboBox<String> jCombPiloto;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
@@ -663,9 +666,8 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JTable jTablePiloto;
     public javax.swing.JTextField txtApellido;
     public javax.swing.JTextField txtCIF;
-    public javax.swing.JTextField txtCategoria;
+    public javax.swing.JTextField txtCIF_aerolinea;
     public javax.swing.JTextField txtDNI;
-    public javax.swing.JTextField txtDNI_avion;
     public javax.swing.JTextField txtDNI_piloto;
     public javax.swing.JTextField txtEdad;
     public javax.swing.JTextField txtFecha_fab;
@@ -673,6 +675,7 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JTextField txtModelo;
     public javax.swing.JTextField txtNEmpleados;
     public javax.swing.JTextField txtN_asientos;
+    public javax.swing.JTextField txtN_departamentos;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtNombrePiloto;
     public javax.swing.JTextField txtSede;

@@ -35,12 +35,13 @@ public class AvionControlador implements ActionListener {
     Vista vistaPrincipal;
     public static DefaultTableModel modeloAvion = new DefaultTableModel();
     public static ArrayList<Avion> listaAviones = new ArrayList<>();
-    private PilotoControlador pilotoController;
+    PilotoControlador pilotoController;
     
     boolean insertar=false;
     boolean modificar=false;
     boolean eliminar=false;
     boolean pkRepetida = false;
+    boolean noEliminar = false;
 
     public AvionControlador(Vista v) {
         this.vistaPrincipal = v;
@@ -80,10 +81,12 @@ public class AvionControlador implements ActionListener {
             vectorObjetos[1] = listaAviones.get(i).getModelo();
             vectorObjetos[2] = listaAviones.get(i).getN_asientos();
             vectorObjetos[3] = listaAviones.get(i).getFecha_fab();
-            vectorObjetos[4] = listaAviones.get(i).getCategoria();
+            vectorObjetos[4] = listaAviones.get(i).getDNI_piloto();
             modeloAvion.addRow(vectorObjetos);
             
         }
+        this.actualizarComboBox();
+        this.resetTextField();
         
     }
 
@@ -107,6 +110,8 @@ public class AvionControlador implements ActionListener {
             
             try {
                 this.escribirEnArchivo();
+                this.actualizarComboBox();
+                this.resetTextField();
             } catch (IOException ex) {
                 Logger.getLogger(AvionControlador.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -156,8 +161,8 @@ public class AvionControlador implements ActionListener {
         this.resetTextField();
         this.setEnable();
         //actualizo comboBox de Pilotos
-        pilotoController.actualizarComboBox();
-        pilotoController.resetTextField();
+//        pilotoController.actualizarComboBox();
+//        pilotoController.resetTextField();
         
     }
     
@@ -180,14 +185,13 @@ public class AvionControlador implements ActionListener {
                
         }
         
-        
         if(pkRepetida==false){
             Avion myAvion = new Avion(
                 this.vistaPrincipal.txtID_avion.getText(),
                 this.vistaPrincipal.txtModelo.getText(),
                 this.vistaPrincipal.txtN_asientos.getText(),
                 this.vistaPrincipal.txtFecha_fab.getText(),
-                this.vistaPrincipal.txtCategoria.getText()  
+                this.vistaPrincipal.txtDNI_piloto.getText()  
             );
 
             this.listaAviones.add(myAvion);
@@ -200,7 +204,7 @@ public class AvionControlador implements ActionListener {
         this.vistaPrincipal.txtModelo.setText("");
         this.vistaPrincipal.txtN_asientos.setText("");
         this.vistaPrincipal.txtFecha_fab.setText("");
-        this.vistaPrincipal.txtCategoria.setText("");  
+        this.vistaPrincipal.txtDNI_piloto.setText("");  
     }
     public void setEnable(){
         this.vistaPrincipal.jButtonInsertarAvion.setEnabled(true);
@@ -209,7 +213,7 @@ public class AvionControlador implements ActionListener {
     }
     
     public void insertar(){
-        
+        //this.actualizarComboBox();
         this.rellenarEInsertarTextField();   
         
         modeloAvion.setRowCount(0);
@@ -219,7 +223,7 @@ public class AvionControlador implements ActionListener {
             vectorObjetos[1] = listaAviones.get(i).getModelo();
             vectorObjetos[2] = listaAviones.get(i).getN_asientos();
             vectorObjetos[3] = listaAviones.get(i).getFecha_fab();
-            vectorObjetos[4] = listaAviones.get(i).getCategoria();
+            vectorObjetos[4] = listaAviones.get(i).getDNI_piloto();
 
             modeloAvion.addRow(vectorObjetos);
         }
@@ -241,7 +245,7 @@ public class AvionControlador implements ActionListener {
                 this.vistaPrincipal.txtModelo.getText(),
                 this.vistaPrincipal.txtN_asientos.getText(),
                 this.vistaPrincipal.txtFecha_fab.getText(),
-                this.vistaPrincipal.txtCategoria.getText()        
+                this.vistaPrincipal.txtDNI_piloto.getText()        
             );
             //actualizo arrayList
             this.listaAviones.set(this.vistaPrincipal.getFila(), myAvion);
@@ -258,7 +262,7 @@ public class AvionControlador implements ActionListener {
     
     public void eliminar() throws IOException{
         this.vistaPrincipal.setFila(this.vistaPrincipal.jTableAvion.getSelectedRow());
-        PilotoControlador myPiloto = new PilotoControlador(this.vistaPrincipal);
+        
         //filtro si no ha seleccionado ninguna fila
         if(this.vistaPrincipal.getFila()<0){
             JOptionPane.showMessageDialog(null, "No has seleccionado ninguna Fila");
@@ -266,23 +270,13 @@ public class AvionControlador implements ActionListener {
         else{
             if(this.listaAviones.size()>0){
                 int i = this.vistaPrincipal.getFila();
-                //elimino el campo DNI_avion que tiene el Piloto asociado
-                for(int j=0; j<PilotoControlador.listaPilotos.size();j++){
-                    if(AvionControlador.listaAviones.get(i).getId_avion().equals(PilotoControlador.listaPilotos.get(j).getDNI_avion())){
-                        PilotoControlador.listaPilotos.get(j).setDNI_avion(" ");
-                        //sobreescribo el archivo modificado
-                        myPiloto.escribirEnArchivo();
-                    }
-                }
                 //elimino el avion del array
                 this.listaAviones.remove(this.vistaPrincipal.getFila());
 
                 this.modeloAvion.removeRow(this.vistaPrincipal.getFila());
                 JOptionPane.showMessageDialog(null, "Fila Eliminada");
-                
-                
-                
-            }
+                }
+               
             else{
                 JOptionPane.showMessageDialog(null, "No hay Filas a Eliminar");
             }
@@ -299,6 +293,21 @@ public class AvionControlador implements ActionListener {
         this.vistaPrincipal.cambiarVisibilidadAvionAC(false);
         this.resetTextField();
         
+    }
+    
+    public void actualizarComboBox(){
+        //si el combobox está vacío no elimina
+        if(this.vistaPrincipal.jCombAviones.getItemCount() == 0){
+            for(int i=0; i<PilotoControlador.listaPilotos.size();i++){
+            this.vistaPrincipal.jCombAviones.addItem(PilotoControlador.listaPilotos.get(i).getDNI());
+            }
+        }
+        else{
+            this.vistaPrincipal.jCombAviones.removeAllItems();
+            for(int i=0; i<PilotoControlador.listaPilotos.size();i++){
+                this.vistaPrincipal.jCombAviones.addItem(PilotoControlador.listaPilotos.get(i).getDNI());
+            }
+        }
     }
     
     public void escribirEnArchivo() throws FileNotFoundException, IOException{
